@@ -28,10 +28,11 @@ export default class Server{
     private escucharSockets() {
         this.io.on('connection', cliente => {
 
-            socket.conectarCliente( cliente );
+            socket.conectarCliente( cliente, this.io );
             socket.confiUsuario(cliente, this.io);
             socket.mensaje(cliente, this.io);
-            socket.desconectar(cliente);
+            socket.obtenerUsuarios(cliente, this.io);
+            socket.desconectar(cliente, this.io);
         
         });
     }
